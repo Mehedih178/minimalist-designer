@@ -1,0 +1,161 @@
+/* Reset and base styles */
+.geometric-pattern {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+/* Soft Gradient Pattern */
+.pattern-1 {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 100%);
+    position: relative;
+}
+
+.pattern-1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(120deg, 
+            rgba(255, 195, 0, 0.03) 0%,
+            rgba(255, 195, 0, 0.05) 50%,
+            rgba(255, 195, 0, 0.03) 100%);
+}
+
+/* Subtle Grid Pattern */
+.pattern-2 {
+    background-color: #fafafa;
+    position: relative;
+}
+
+.pattern-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Minimal Lines Pattern */
+.pattern-3 {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+    position: relative;
+}
+
+.pattern-3::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(45deg, 
+            transparent 46%,
+            rgba(0, 0, 0, 0.03) 49%,
+            rgba(0, 0, 0, 0.03) 51%,
+            transparent 54%);
+    background-size: 20px 20px;
+}
+
+/* Hero Section Patterns */
+.artistic-shape {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.shape-1 {
+    background: linear-gradient(120deg, #ffffff, #fafafa);
+    position: relative;
+}
+
+.shape-1::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 30% 30%, 
+            rgba(255, 195, 0, 0.03) 0%,
+            transparent 60%);
+}
+
+.shape-2 {
+    background: linear-gradient(135deg, #ffffff, #f8f8f8);
+    position: relative;
+}
+
+.shape-2::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(-45deg, 
+            transparent 48%,
+            rgba(255, 195, 0, 0.05) 49%,
+            rgba(255, 195, 0, 0.05) 51%,
+            transparent 52%);
+    background-size: 30px 30px;
+}
+
+.shape-3 {
+    background: #ffffff;
+    position: relative;
+}
+
+.shape-3::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(0deg,
+            transparent 47%,
+            rgba(0, 0, 0, 0.02) 49%,
+            rgba(0, 0, 0, 0.02) 51%,
+            transparent 53%);
+    background-size: 40px 40px;
+}
+
+/* Subtle Hover Effects */
+.portfolio-item:hover .geometric-pattern {
+    transform: scale(1.02);
+    transition: transform 0.5s ease;
+}
+
+/* Card Shadows */
+.portfolio-item {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    transition: box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Overlay Adjustments */
+.portfolio-overlay {
+    background: rgba(255, 255, 255, 0.95);
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .geometric-pattern, .artistic-shape {
+        height: 250px;
+    }
+} 
