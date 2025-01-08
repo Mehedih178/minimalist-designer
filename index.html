@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Minimalist Designer</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/patterns.css">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="rights" content="Copyright © 2024 The Minimalist Designer. All rights reserved.">
+    
+    <!-- Disable right-click -->
+    <script>
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+    </script>
+    
+    <!-- Disable keyboard shortcuts -->
+    <script>
+        document.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 's' || e.key === 'u')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="warning-banner">
+        ⚠️ This is a showcase website. All rights reserved. Unauthorized use or reproduction is strictly prohibited.
+        <a href="#" id="warning-close">✕</a>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">MD.</div>
+            <div class="nav-elements">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="theme-toggle-btn" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Creative <span>Designer</span> & Developer</h1>
+                <p class="hero-subtitle">Crafting meaningful digital experiences through thoughtful design and innovative development solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#portfolio" class="primary-btn">
+                        View Portfolio
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="secondary-btn">
+                        Get in Touch
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="hero-image">
+                <div class="hero-img-container">
+                    <div class="geometric-shapes">
+                        <div class="shape shape-1"></div>
+                        <div class="shape shape-2"></div>
+                        <div class="shape shape-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span>Scroll Down</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="section-header">
+            <h2>Featured Works</h2>
+            <p class="section-subtitle">Selected projects from my creative journey</p>
+        </div>
+        
+        <div class="featured-carousel">
+            <!-- Navigation Arrows -->
+            <div class="carousel-arrows">
+                <button class="carousel-btn prev-btn" aria-label="Previous">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+                <button class="carousel-btn next-btn" aria-label="Next">
+                    <svg width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- First Slide -->
+                    <div class="carousel-slide">
+                        <div class="featured-work">
+                            <div class="work-image">
+                                <div class="image-placeholder gradient-animate">
+                                    <i class="fas fa-laptop-code placeholder-icon"></i>
+                                </div>
+                                <span class="category">Web Development</span>
+                            </div>
+                            <div class="work-info">
+                                <div class="work-header">
+                                    <h3 class="work-title">E-commerce Platform</h3>
+                                    <button class="btn-like" aria-label="Like project">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="work-description">
+                                    A modern e-commerce platform built with React and Node.js, featuring real-time inventory management.
+                                </p>
+                                <div class="work-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        4.9 Rating
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        2.1k Views
+                                    </span>
+                                </div>
+                                <div class="work-tags">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Second Slide (Exact Copy) -->
+                    <div class="carousel-slide">
+                        <div class="featured-work">
+                            <div class="work-image">
+                                <div class="image-placeholder gradient-animate">
+                                    <i class="fas fa-laptop-code placeholder-icon"></i>
+                                </div>
+                                <span class="category">Web Development</span>
+                            </div>
+                            <div class="work-info">
+                                <div class="work-header">
+                                    <h3 class="work-title">Portfolio Website</h3>
+                                    <button class="btn-like" aria-label="Like project">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="work-description">
+                                    A modern e-commerce platform built with React and Node.js, featuring real-time inventory management.
+                                </p>
+                                <div class="work-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        4.9 Rating
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        2.1k Views
+                                    </span>
+                                </div>
+                                <div class="work-tags">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Third Slide (Exact Copy) -->
+                    <div class="carousel-slide">
+                        <div class="featured-work">
+                            <div class="work-image">
+                                <div class="image-placeholder gradient-animate">
+                                    <i class="fas fa-laptop-code placeholder-icon"></i>
+                                </div>
+                                <span class="category">Web Development</span>
+                            </div>
+                            <div class="work-info">
+                                <div class="work-header">
+                                    <h3 class="work-title">Mobile App</h3>
+                                    <button class="btn-like" aria-label="Like project">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="work-description">
+                                    A modern e-commerce platform built with React and Node.js, featuring real-time inventory management.
+                                </p>
+                                <div class="work-stats">
+                                    <span class="stat-item">
+                                        <i class="fas fa-star"></i>
+                                        4.9 Rating
+                                    </span>
+                                    <span class="stat-item">
+                                        <i class="fas fa-eye"></i>
+                                        2.1k Views
+                                    </span>
+                                </div>
+                                <div class="work-tags">
+                                    <span>React</span>
+                                    <span>Node.js</span>
+                                    <span>MongoDB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="carousel-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-container">
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <div class="profile-image">
+                    <!-- Replace with actual image path -->
+                    <div class="profile-placeholder geometric-pattern pattern-3"></div>
+                </div>
+                <div class="profile-info">
+                    <h2>About Me</h2>
+                    <h3>Creative Designer & Developer</h3>
+                    <p class="bio">With over 8 years of experience in design and development, I specialize in creating meaningful digital experiences that combine aesthetic excellence with functional precision.</p>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">120+</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">95%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="skills-section">
+                <h3>Expertise</h3>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4>Design</h4>
+                        <ul class="skill-list">
+                            <li>UI/UX Design</li>
+                            <li>Brand Identity</li>
+                            <li>Visual Design</li>
+                            <li>Prototyping</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Development</h4>
+                        <ul class="skill-list">
+                            <li>HTML/CSS</li>
+                            <li>JavaScript</li>
+                            <li>React</li>
+                            <li>Node.js</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h4>Tools</h4>
+                        <ul class="skill-list">
+                            <li>Figma</li>
+                            <li>Adobe Creative Suite</li>
+                            <li>Sketch</li>
+                            <li>VS Code</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="experience-section">
+                <h3>Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="date">2020 - Present</span>
+                            <h4>Senior Designer</h4>
+                            <p>Creative Studio NYC</p>
+                            <ul class="achievements">
+                                <li>Led design team of 5 members</li>
+                                <li>Delivered 40+ successful projects</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="date">2017 - 2020</span>
+                            <h4>UI/UX Designer</h4>
+                            <p>Tech Innovations Inc.</p>
+                            <ul class="achievements">
+                                <li>Redesigned core product interface</li>
+                                <li>Increased user engagement by 45%</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="date">2015 - 2017</span>
+                            <h4>Junior Designer</h4>
+                            <p>Digital Agency Lab</p>
+                            <ul class="achievements">
+                                <li>Worked on 25+ client projects</li>
+                                <li>Specialized in brand identity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p class="section-subtitle">Have a question or want to work together?</p>
+            </div>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" class="form-input" placeholder="Your name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" class="form-input" placeholder="Your email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" class="form-textarea" placeholder="Your message" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <!-- Main Footer Content -->
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="logo">MD.</div>
+                    <p class="brand-description">
+                        Creating meaningful digital experiences through thoughtful design and innovation.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Behance">
+                            <i class="fab fa-behance"></i>
+                        </a>
+                        <a href="#" aria-label="Dribbble">
+                            <i class="fab fa-dribbble"></i>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#portfolio">Portfolio</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-services">
+                    <h4>Services</h4>
+                    <ul>
+                        <li>UI/UX Design</li>
+                        <li>Brand Identity</li>
+                        <li>Web Development</li>
+                        <li>Digital Strategy</li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:hello@minimalistdesigner.com">hello@minimalistdesigner.com</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+1234567890">+1 (234) 567-890</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>New York, NY 10012</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="footer-newsletter">
+                <h4>Stay Updated</h4>
+                <p>Subscribe to my newsletter for design insights and updates.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <div class="copyright">
+                    © 2024 Minimalist Designer. All rights reserved.
+                </div>
+                <div class="legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 
