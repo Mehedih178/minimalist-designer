@@ -6,16 +6,16 @@ document.addEventListener('DOMContentLoaded', () => {
         currentIndex: 0,
 
         init() {
-            if (this.items.length === 0) return;
+            if (!this.container || this.items.length === 0) return;
             this.items[0].classList.add('active');
             this.startAutoPlay();
         },
 
         showNext() {
             if (this.items.length <= 1) return;
-            this.items[this.currentIndex].classList.remove('active');
+            this.items[this.currentIndex]?.classList.remove('active');
             this.currentIndex = (this.currentIndex + 1) % this.items.length;
-            this.items[this.currentIndex].classList.add('active');
+            this.items[this.currentIndex]?.classList.add('active');
         },
 
         startAutoPlay() {
@@ -24,9 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // Initialize hero carousel if it exists
-    if (heroCarousel.container) {
-        heroCarousel.init();
-    }
+    heroCarousel.init();
 
     // Featured Work Carousel
     const initFeaturedCarousel = () => {
@@ -34,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!carousel) return;
 
         const track = carousel.querySelector('.carousel-track');
-        const slides = Array.from(track.children);
+        const slides = Array.from(track?.children || []);
         const nextButton = carousel.querySelector('.next-btn');
         const prevButton = carousel.querySelector('.prev-btn');
         const progressBar = carousel.querySelector('.progress-bar');
@@ -43,15 +41,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set initial position of slides
         slides.forEach((slide, index) => {
-            slide.style.left = `${index * 100}%`;
+            if (slide) slide.style.left = `${index * 100}%`;
         });
 
         const updateProgress = () => {
+            if (!progressBar || slides.length <= 1) return;
             const progress = (currentIndex / (slides.length - 1)) * 100;
             progressBar.style.width = `${progress}%`;
         };
 
         const updateButtons = () => {
+            if (!prevButton || !nextButton) return;
             prevButton.disabled = currentIndex === 0;
             nextButton.disabled = currentIndex === slides.length - 1;
             prevButton.style.opacity = currentIndex === 0 ? '0.5' : '1';
@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const moveToSlide = (index) => {
+            if (!track) return;
             track.style.transform = `translateX(-${index * 100}%)`;
             currentIndex = index;
             updateProgress();
@@ -85,15 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
         let touchStartX = 0;
         let touchEndX = 0;
 
-        track.addEventListener('touchstart', (e) => {
+        track?.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
         });
 
-        track.addEventListener('touchmove', (e) => {
+        track?.addEventListener('touchmove', (e) => {
             touchEndX = e.touches[0].clientX;
         });
 
-        track.addEventListener('touchend', () => {
+        track?.addEventListener('touchend', () => {
             const difference = touchStartX - touchEndX;
             if (Math.abs(difference) > 50) {
                 if (difference > 0 && currentIndex < slides.length - 1) {
@@ -108,14 +109,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize featured carousel
     initFeaturedCarousel();
 
-    // Like button functionality
+    // Like button functionality with error handling
     document.querySelectorAll('.btn-like').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             this.classList.toggle('liked');
             
-            // Optional: Add a little bounce animation
             const icon = this.querySelector('i');
+            if (!icon) return;
+
             icon.style.transform = 'scale(1.3)';
             setTimeout(() => {
                 icon.style.transform = 'scale(1)';
@@ -123,19 +125,66 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Theme Toggle
+    // Fix mobile menu functionality
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const mobileNav = document.querySelector('.mobile-nav');
+
+    menuToggle?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        menuToggle.classList.toggle('active');
+        mobileMenu?.classList.toggle('active');
+        document.body.classList.toggle('menu-open');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const target = e.target;
+        if (mobileMenu?.classList.contains('active') && 
+            !mobileNav?.contains(target) && 
+            !menuToggle?.contains(target)) {
+            menuToggle?.classList.remove('active');
+            mobileMenu?.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        }
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.mobile-nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // Theme Toggle functionality
     const initThemeToggle = () => {
         const themeToggle = document.querySelector('.theme-toggle-btn');
-        if (!themeToggle) return;
-
+        const icon = themeToggle?.querySelector('i');
+        
+        // Get saved theme or default to light
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        // Update icon based on current theme
+        if (icon) {
+            icon.className = savedTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
 
-        themeToggle.addEventListener('click', () => {
+        themeToggle?.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            // Update theme
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
+            
+            // Update icon
+            if (icon) {
+                icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            }
+            
+            // Update components for theme
             updateComponentsForTheme(newTheme);
         });
     };
@@ -162,13 +211,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize theme toggle
     initThemeToggle();
 
-    // Smooth scrolling for navigation
+    // Smooth scrolling with offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const headerOffset = 60;
+                const elementPosition = target.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -229,8 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Mobile Menu Toggle
-    const menuBtn = document.querySelector('.menu-btn');
-    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuBtn = document.querySelector('.menu-toggle');
 
     menuBtn?.addEventListener('click', () => {
         menuBtn.classList.toggle('active');
@@ -353,30 +409,5 @@ document.addEventListener('DOMContentLoaded', () => {
         banner.style.display = 'none';
         document.querySelector('.navbar').style.top = '0';
         document.querySelector('.hero').style.paddingTop = '8rem';
-    });
-
-    // Additional protection
-    document.addEventListener('DOMContentLoaded', () => {
-        // Disable text selection
-        document.body.style.userSelect = 'none';
-        
-        // Add watermark
-        const watermark = document.createElement('div');
-        watermark.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            font-size: 12px;
-            color: rgba(0,0,0,0.2);
-            pointer-events: none;
-            z-index: 1000;
-            transform: rotate(-45deg);
-        `;
-        watermark.textContent = '© The Minimalist Designer 2024';
-        document.body.appendChild(watermark);
-        
-        // Console warning
-        console.log('%c⚠️ Stop!', 'color: red; font-size: 30px; font-weight: bold;');
-        console.log('%cThis is a protected website. All content is monitored and protected by copyright law.', 'font-size: 14px;');
     });
 }); 
