@@ -10,27 +10,8 @@
     <link rel="stylesheet" href="css/patterns.css">
     <meta name="robots" content="noindex, nofollow">
     <meta name="rights" content="Copyright © 2024 The Minimalist Designer. All rights reserved.">
-    
-    <!-- Disable right-click -->
-    <script>
-        document.addEventListener('contextmenu', (e) => e.preventDefault());
-    </script>
-    
-    <!-- Disable keyboard shortcuts -->
-    <script>
-        document.addEventListener('keydown', (e) => {
-            if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 's' || e.key === 'u')) {
-                e.preventDefault();
-            }
-        });
-    </script>
 </head>
 <body>
-    <div class="warning-banner">
-        ⚠️ This is a showcase website. All rights reserved. Unauthorized use or reproduction is strictly prohibited.
-        <a href="#" id="warning-close">✕</a>
-    </div>
-
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">MD.</div>
@@ -44,6 +25,21 @@
                 <button class="theme-toggle-btn" aria-label="Toggle theme">
                     <i class="fas fa-moon"></i>
                 </button>
+            </div>
+            <div class="mobile-nav">
+                <button class="menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="mobile-menu">
+                    <ul class="mobile-nav-links">
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                        <li><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </nav>
